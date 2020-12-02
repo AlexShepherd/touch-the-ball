@@ -1,14 +1,15 @@
 let score = 0
 const maxTime = 15
 
+
 function setup() {
-    createCanvas(512, 512)
+    createCanvas(windowWidth, windowHeight)
 }
 function draw() {
     background(120, 2, 120)
     let sec = frameCount / 60
-    let x = noise((frameCount+score)/100, 354) * 512
-    let y = noise((frameCount+score)/100, 350) * 512
+    let x = noise((frameCount+score)/100, 354) * width
+    let y = noise((frameCount+score)/100, 350) * height
     const hover = dist(x, y, mouseX, mouseY)
     if(hover < 25) {
         fill(255, 255, 0)
@@ -23,6 +24,6 @@ function draw() {
     textSize(35)
     textAlign(CENTER)
     text(score, width/2, 50)
-    text(abs(maxTime - sec).toFixed(1), width/2, 470)
+    text(abs(maxTime - sec).toFixed(1), width/2, height-50)
     ellipse(x, y, 50, 50)
 }
