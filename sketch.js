@@ -11,6 +11,12 @@ function draw() {
     let x = noise((frameCount+score)/100, 354) * width
     let y = noise((frameCount+score)/100, 350) * height
     const hover = dist(x, y, mouseX, mouseY)
+
+    function noScroll() {
+        window.scrollTo(0, 0);
+      }
+    window.addEventListener('scroll', noScroll);
+
     if(hover < 25) {
         fill(255, 255, 0)
         score += 1
@@ -20,6 +26,9 @@ function draw() {
     }
     if(sec > maxTime) {
         noLoop()
+        textSize(150)
+        textAlign(CENTER)
+        text('GAME OVER', width/2, height/2)
     }
     textSize(35)
     textAlign(CENTER)
